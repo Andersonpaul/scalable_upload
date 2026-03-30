@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Use environment variable in production
-AZURE_CONNECTION_STRING = "BlobEndpoint=https://cw2storages.blob.core.windows.net/images?sp=racw&st=2026-02-23T22:24:24Z&se=2028-01-29T06:39:24Z&spr=https&sv=2024-11-04&sr=c&sig=xn95bpkjIIZmRiCBA1jCHpDZ%2FaZ2QAqa7o0fTePfQaw%3D"
+AZURE_CONNECTION_STRING = "BlobEndpoint=https://picturesupload.blob.core.windows.net/;QueueEndpoint=https://picturesupload.queue.core.windows.net/;FileEndpoint=https://picturesupload.file.core.windows.net/;TableEndpoint=https://picturesupload.table.core.windows.net/;SharedAccessSignature=sv=2024-11-04&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2050-03-30T22:45:30Z&st=2026-03-30T14:30:30Z&spr=https,http&sig=2AcrZW6JpKeLjnv8IHwbeWrC9nkmsp1jgXau9gZ5Gjo%3D"
 CONTAINER_NAME = "images"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 SEARCH_ENDPOINT = "https://cw2aivision.search.windows.net"
@@ -63,7 +63,7 @@ def upload_image():
 
 @app.route("/gallery", methods=["GET"])
 def view_gallery():
-    CONTAINER_SAS_URL = "https://cw2storages.blob.core.windows.net/images?sp=racwdlmeop&st=2026-02-27T18:08:28Z&se=2027-10-30T02:23:28Z&spr=https&sv=2024-11-04&sr=c&sig=S2jtpgXxvTwTU2DEPFqckOUaeejgLYOLrOhC5VWPPzs%3D"
+    CONTAINER_SAS_URL = "https://picturesupload.blob.core.windows.net/images?sp=r&st=2026-03-30T14:38:05Z&se=2050-03-30T22:53:05Z&sv=2024-11-04&sr=c&sig=Uo8dUBl0jR7clmX%2BtdOLjFVSkJYTASuRKsikwlDuRf8%3D"
 
     container_client = ContainerClient.from_container_url(CONTAINER_SAS_URL)
 
